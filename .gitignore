@@ -1,0 +1,23 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/CourseService/.vs
+/UserService/.vs
+/UserService/src/UserService.Application/bin/Debug
+/UserService/src/UserService.Application/obj
+/UserService/src/UserService.Domain/bin/Debug
+/UserService/src/UserService.Domain/obj
+/UserService/src/UserService.Infrastructure/bin/Debug
+/UserService/src/UserService.Infrastructure/obj
+/UserService/src/UserService.WebApi/bin/Debug
+/UserService/src/UserService.WebApi/obj
+/CourseService/src/CourseService.Application/bin/Debug/net8.0
+/CourseService/src/CourseService.Application/obj
+/CourseService/src/CourseService.Domain/bin/Debug/net8.0
+/CourseService/src/CourseService.Domain/obj
+/CourseService/src/CourseService.Infrastructure/bin/Debug/net8.0
+/CourseService/src/CourseService.Infrastructure/obj
+/CourseService/src/CourseService.WebApi/bin/Debug/net8.0
+/CourseService/src/CourseService.WebApi/obj
