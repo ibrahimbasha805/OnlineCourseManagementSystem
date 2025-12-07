@@ -21,3 +21,11 @@
 /CourseService/src/CourseService.Infrastructure/obj
 /CourseService/src/CourseService.WebApi/bin/Debug/net8.0
 /CourseService/src/CourseService.WebApi/obj
+/UserService/tests/UserService.Application.Tests/bin
+/UserService/tests/UserService.Application.Tests/obj
+/UserService/tests/UserService.Common/bin/Debug/net8.0
+/UserService/tests/UserService.Common/obj
+/UserService/tests/UserService.Infrastructure.Tests/bin
+/UserService/tests/UserService.Infrastructure.Tests/obj
+/UserService/tests/UserService.WebApi.Tests/bin
+/UserService/tests/UserService.WebApi.Tests/obj

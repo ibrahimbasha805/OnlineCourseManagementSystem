@@ -120,4 +120,16 @@ public class UserService : IUserService
         var token = handler.CreateToken(descriptor);
         return handler.WriteToken(token);
     }
+
+    public async Task<List<UserDto>> GetAllAsync()
+    {
+        var users = await _userRepository.GetAllUsers();
+        var userDtos = users.Select(user => new UserDto
+        {
+            UserId = user.UserId,
+            Name = user.Name,
+            RoleName = user.Role.ToString(),
+        }).ToList();
+        return userDtos;
+    }
 }

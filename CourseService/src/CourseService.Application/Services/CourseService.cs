@@ -49,6 +49,22 @@ public class CourseService : ICourseService
         return course.CourseId;
     }
 
+    public async Task<List<AllCoursesDto>> GetAllCourseAsync(CancellationToken cancellationToken = default)
+    {
+        var courses = await _courseRepository.GetAllAsync(cancellationToken);
+
+        var coursesDto = courses.Select(x => new AllCoursesDto()
+        {
+            CourseId = x.CourseId,
+            CourseName = x.CourseName,
+            InstructorUserId = x.InstructorUserId
+
+        }).ToList();
+
+        return coursesDto;
+
+    }
+
 
     public async Task<CourseDto?> GetCourseByIdAsync(int id, CancellationToken cancellationToken = default)
     {

@@ -15,4 +15,6 @@ public interface ICourseService
         int pageNumber,
         int pageSize);
 
+    Task<List<AllCoursesDto>> GetAllCourseAsync(CancellationToken cancellationToken = default);
+
 }

@@ -13,4 +13,5 @@ public interface IUserService
     Task<LoginResponseDto?> LoginAsync(LoginRequestDto dto);
     Task<UserDto?> GetByIdAsync(int id);
     Task<UserDto?> GetByNameAsync(string name);
+    Task<List<UserDto>> GetAllAsync();
 }

@@ -125,6 +125,14 @@ public class CoursesController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> GetAllCourses(
+        CancellationToken cancellationToken)
+    {
+        var courses = await _courseService.GetAllCourseAsync(cancellationToken);
+        return Ok(courses);
+    }
+
     private async Task<ModelStateDictionary?> ValidateCreateCourse(CreateCourseDto request, CancellationToken cancellationToken)
     {
         var validationResult = await _createCourseValidator.ValidateAsync(request, cancellationToken);

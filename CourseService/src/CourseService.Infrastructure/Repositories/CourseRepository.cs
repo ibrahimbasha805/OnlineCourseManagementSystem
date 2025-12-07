@@ -62,6 +62,14 @@ public class CourseRepository : ICourseRepository
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
+    public async Task<List<Course>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Courses
+            .OrderBy(c => c.StartDate)
+            .ToListAsync(cancellationToken);
+    }
+
+
     public async Task<(List<Course> Items, int TotalCount)> SearchAsync(
         DateTime? fromDate,
         DateTime? toDate,

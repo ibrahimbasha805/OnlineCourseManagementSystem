@@ -20,5 +20,7 @@ public interface ICourseRepository
     Task<bool> IsStudentEnrolledAsync(int courseId, int userId);
 
     Task<List<Course>> GetEnrolledCoursesByStudentIdAsync(int studentId);
+
+    Task<List<Course>> GetAllAsync(CancellationToken cancellationToken = default);
 }
 

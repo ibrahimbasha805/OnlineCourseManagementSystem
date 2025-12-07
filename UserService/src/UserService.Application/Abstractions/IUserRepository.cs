@@ -14,4 +14,6 @@ public interface IUserRepository
     Task<int> AddAsync(User user);
 
     Task<User?> GetByNameAsync(string? name);
+
+    Task<List<User>> GetAllUsers();
 }

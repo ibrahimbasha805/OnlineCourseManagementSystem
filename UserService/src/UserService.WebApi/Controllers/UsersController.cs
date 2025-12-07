@@ -30,5 +30,10 @@ public class UsersController : ControllerBase
         return Ok(user); 
     }
 
-
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var users = await _userService.GetAllAsync();
+        return Ok(users);
+    }
 }
