@@ -29,7 +29,7 @@ This system manages **Users, Courses, Enrollment, Authentication, Authorization,
 - **Password Security:** BCrypt.Net  
 - **Architecture:** Clean Architecture  
 - **Logging:** Serilog 
-- **Containers:** Docker, Docker Compose  
+- **Containers:** Docker
 - **Reverse Proxy:** Nginx  
 - **API Communication:** HttpClient 
 - **Database:** In-Memory (EF Core)  
@@ -86,7 +86,7 @@ Before running this project, install:
 | Role       | Permissions                              |
 | ---------- | ---------------------------------------- |   
 | Instructor | Create & manage courses, enroll students |
-| Student    | View & enroll in assigned courses        |
+| Student    | View enrolled assigned courses        |
 
 ---
 ## 📡 API Communication
@@ -150,14 +150,14 @@ http://localhost/courses → CourseService
 
 - **Create a custom Docker network** : docker network create ocms-net
 
-- **Create course service docker Image (using from local path)** :
-docker build -f Docker\Dockerfile -t ocms/courseservice:1.0 .
+- **Create course service docker Image (using from local path)** :          
+     - docker build -f Docker\Dockerfile -t ocms/courseservice:1.0 .
 
 - **Create user service docker Image (using from local path)** :
-docker build -f Docker\Dockerfile -t ocms/userservice:1.0 .
+     - docker build -f Docker\Dockerfile -t ocms/userservice:1.0 .
 
 - **Create user service docker Container** :
-docker run -d --name userservice --network ocms-net --env-file <localpath>\users.env -p 5000:5000 --restart unless-stopped ocms/userservice:1.0
+    - docker run -d --name userservice --network ocms-net --env-file <localpath>\users.env -p 5000:5000 --restart unless-stopped ocms/userservice:1.0
 
 - **Create Course service docker Container** :
-docker run -d --name courseservice --network ocms-net --env-file <localpath>\courses.env -p 5001:5001 --restart unless-stopped ocms/courseservice:1.0
+    - docker run -d --name courseservice --network ocms-net --env-file <localpath>\courses.env -p 5001:5001 --restart unless-stopped ocms/courseservice:1.0
