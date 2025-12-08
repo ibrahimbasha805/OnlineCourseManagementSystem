@@ -38,7 +38,7 @@ public class CoursesController : ControllerBase
     public async Task<IActionResult> CreateCourse(
         [FromBody] CreateCourseDto request,
         CancellationToken cancellationToken)
-    {
+    {   
         var modelState= await ValidateCreateCourse(request, cancellationToken);
         if (modelState!=null)
         {

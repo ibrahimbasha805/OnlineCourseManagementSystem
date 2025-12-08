@@ -29,3 +29,12 @@
 /UserService/tests/UserService.Infrastructure.Tests/obj
 /UserService/tests/UserService.WebApi.Tests/bin
 /UserService/tests/UserService.WebApi.Tests/obj
+/CourseService/tests/CourseService.Application.Tests/bin
+/CourseService/tests/CourseService.Application.Tests/obj
+/CourseService/tests/CourseService.Application.Tests/obj/Debug/net8.0/ref/CourseService.Application.Tests.dll
+/CourseService/tests/CourseService.Common/bin/Debug/net8.0
+/CourseService/tests/CourseService.Common/obj
+/CourseService/tests/CourseService.Infrastructure.Tests/bin
+/CourseService/tests/CourseService.Infrastructure.Tests/obj
+/CourseService/tests/CourseService.WebApi.Tests/bin
+/CourseService/tests/CourseService.WebApi.Tests/obj
