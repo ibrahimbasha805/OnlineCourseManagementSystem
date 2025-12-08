@@ -26,13 +26,13 @@ public class EnrollmentsController : ControllerBase
     [Authorize(Roles = "Instructor")]
     public async Task<IActionResult> Enroll([FromBody] EnrollCourseDto dto)
     {
-        _logger.LogInformation("Course enrollment request. EnrollCourse:{Course}", JsonSerializer.Serialize(dto));
+        _logger.LogInformation("Course enrollment request. EnrollCourse:{EnrollCourse}", JsonSerializer.Serialize(dto));
         
         var authHeader = Request.Headers["Authorization"].FirstOrDefault();
-        var course = await _enrollService.EnrollStudentAsync(dto, authHeader);
+         await _enrollService.EnrollStudentAsync(dto, authHeader);
 
-        _logger.LogInformation("Course enrolled successfully.Course:{Course}", JsonSerializer.Serialize(course));
-        return Ok(course);
+        _logger.LogInformation("Course enrolled successfully.EnrollCourse:{EnrollCourse}", JsonSerializer.Serialize(dto));
+        return Ok("Course enrolled successfully");
     }
 }
 

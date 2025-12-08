@@ -22,7 +22,7 @@ public class EnrollService : IEnrollService
         _configuration = configuration;
     }
 
-    public async Task<CourseDto> EnrollStudentAsync(EnrollCourseDto dto, string? forwardedAuthorizationHeader)
+    public async Task EnrollStudentAsync(EnrollCourseDto dto, string? forwardedAuthorizationHeader)
     {
         var baseUrl = _configuration["CourseService:BaseUrl"] ?? "https://localhost:7001";
         var client = _httpClientFactory.CreateClient();
@@ -52,10 +52,6 @@ public class EnrollService : IEnrollService
         }
 
         _logger.LogInformation("CourseService Api call successfull, Url:{Url}", url);
-
-
-        var course = JsonSerializer.Deserialize<CourseDto>(body);
-
-        return course!;
+               
     }
 }

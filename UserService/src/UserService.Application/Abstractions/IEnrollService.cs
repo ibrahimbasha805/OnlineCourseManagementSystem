@@ -9,5 +9,5 @@ namespace UserService.Application.Abstractions;
 
 public interface IEnrollService
 {
-    Task<CourseDto> EnrollStudentAsync(EnrollCourseDto dto, string? forwardedAuthorizationHeader);
+    Task EnrollStudentAsync(EnrollCourseDto dto, string? forwardedAuthorizationHeader);
 }

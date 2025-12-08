@@ -20,7 +20,6 @@ public class EnrollmentsControllerTests
     public async Task Enroll_ReturnsOk_AndForwardsAuthorizationHeader(
         [Frozen] Mock<IEnrollService> enrollServiceMock,
         EnrollCourseDto dto,
-        CourseDto course,
         EnrollmentsController controller)
     {
         // Arrange
@@ -31,7 +30,7 @@ public class EnrollmentsControllerTests
 
         enrollServiceMock
             .Setup(s => s.EnrollStudentAsync(dto, forwarded))
-            .ReturnsAsync(course);
+            .Returns(Task.CompletedTask);
 
         // Act
         var result = await controller.Enroll(dto);
@@ -39,7 +38,7 @@ public class EnrollmentsControllerTests
         // Assert
         result.Should().BeOfType<OkObjectResult>();
         var ok = (OkObjectResult)result;
-        ok.Value.Should().BeSameAs(course);
+        ok.Value.Should().Be("Course enrolled successfully");
 
         enrollServiceMock.Verify(s => s.EnrollStudentAsync(dto, forwarded), Times.Once);
     }
@@ -69,7 +68,6 @@ public class EnrollmentsControllerTests
     public async Task Enroll_ForwardsNullAuthorization_WhenHeaderMissing(
         [Frozen] Mock<IEnrollService> enrollServiceMock,
         EnrollCourseDto dto,
-        CourseDto course,
         EnrollmentsController controller)
     {
         // Arrange - no Authorization header set
@@ -78,7 +76,7 @@ public class EnrollmentsControllerTests
 
         enrollServiceMock
             .Setup(s => s.EnrollStudentAsync(dto, (string?)null))
-            .ReturnsAsync(course);
+            .Returns(Task.CompletedTask);
 
         // Act
         var result = await controller.Enroll(dto);
@@ -86,7 +84,7 @@ public class EnrollmentsControllerTests
         // Assert
         result.Should().BeOfType<OkObjectResult>();
         var ok = (OkObjectResult)result;
-        ok.Value.Should().BeSameAs(course);
+        ok.Value.Should().Be("Course enrolled successfully");
 
         enrollServiceMock.Verify(s => s.EnrollStudentAsync(dto, (string?)null), Times.Once);
     }
