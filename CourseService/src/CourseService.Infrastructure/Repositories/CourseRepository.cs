@@ -79,28 +79,21 @@ public class CourseRepository : ICourseRepository
     {
         var query = _dbContext.Courses.AsQueryable();
 
-        
-        if (fromDate.HasValue && toDate.HasValue)
+
+        if (fromDate.HasValue && toDate.HasValue && instructorId.HasValue)
         {
             query = query.Where(c =>
-                c.EndDate >= fromDate.Value &&
-                c.StartDate <= toDate.Value);
+                (c.StartDate >= fromDate.Value
+                && c.EndDate <= toDate.Value) && c.InstructorUserId == instructorId!.Value);
+
         }
-        else if (fromDate.HasValue)
+        else
         {
-            query = query.Where(c => c.EndDate >= fromDate.Value);
-        }
-        else if (toDate.HasValue)
-        {
-            query = query.Where(c => c.StartDate <= toDate.Value);
-        }
-        
-        if (instructorId.HasValue && instructorId.Value > 0)
-        {
-            query = query.Where(c => c.InstructorUserId == instructorId.Value);
+            return new(new List<Course>(), 0);
         }
 
-        var totalCount = await query.CountAsync();
+
+       var totalCount = await query.CountAsync();
 
         if (pageNumber <= 0) pageNumber = 1;
         if (pageSize <= 0) pageSize = 10;

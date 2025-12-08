@@ -131,8 +131,7 @@ public class CourseService : ICourseService
         var (items, totalCount) = await _courseRepository.SearchAsync(
             fromDate, toDate, instructorUserId, pageNumber, pageSize);
 
-        //var dtoItems = items.Select(MapToDto).ToList();
-
+        
         List<SearchCourseDto> courseDtos = new();
 
         foreach (var c in items)
