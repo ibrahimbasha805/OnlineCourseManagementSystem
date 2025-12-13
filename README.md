@@ -157,7 +157,16 @@ http://localhost/courses → CourseService
      - docker build -f Docker\Dockerfile -t ocms/userservice:1.0 .
 
 - **Create user service docker Container** :
-    - docker run -d --name userservice --network ocms-net --env-file <localpath>\users.env -p 5000:5000 --restart unless-stopped ocms/userservice:1.0
+    - docker run -d --name userservice --network ocms-net --env-file <localpath\UserService>\users.env -p 5000:5000 --restart unless-stopped ocms/userservice:1.0
 
 - **Create Course service docker Container** :
-    - docker run -d --name courseservice --network ocms-net --env-file <localpath>\courses.env -p 5001:5001 --restart unless-stopped ocms/courseservice:1.0
+    - docker run -d --name courseservice --network ocms-net --env-file <localpath\CourseService>\courses.env -p 5001:5001 --restart unless-stopped ocms/courseservice:1.0
+  
+- **Create Nginx docker Container** : 
+    - docker run -d --name nginx-proxy --network ocms-net -p 80:80 -p 443:443 -v <localpath>\OnlineCourseManagementSystem\nginx_conf:/etc/nginx/conf.d -v <localpath>\OnlineCourseManagementSystem\certs:/etc/nginx/certs --restart unless-stopped nginx:stable
+
+- **Check application is working** :
+    - https://localhost/users/health
+    - https://localhost/courses/health
+    - https://localhost/users/swagger/index.html
+    - https://localhost/courses/swagger/index.html
